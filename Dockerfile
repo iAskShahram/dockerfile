@@ -1,3 +1,7 @@
-FROM alpine:latest
+FROM ghcr.io/triggerdotdev/trigger.dev:${TRIGGER_IMAGE_TAG:-v3}
 
-CMD ["/bin/sh", "-c", "while true; do echo 'Container is running...'; sleep 5; done"]
+COPY start.sh /app/start.sh
+COPY . /app
+RUN chmod +x /app/start.sh
+
+CMD ["/app/start.sh"]
