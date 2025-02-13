@@ -9,10 +9,6 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-# Copy package files first for better caching
-COPY package*.json ./
-RUN npm ci --only=production
-
 # Copy all necessary files
 COPY . .
 
